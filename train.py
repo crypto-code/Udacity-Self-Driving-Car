@@ -57,11 +57,7 @@ if __name__ == '__main__':
     ##########################
     print('Reading Samples.......')
     # Read in samples
-  #  simulation_logs = ['data/track1_test/driving_log.csv', 'data/track1_reverse/driving_log.csv',
-  #                     'data/track1_recovery_reverse/driving_log.csv', 'data/track1_recovery/driving_log.csv', 'data/track1_recovery/driving_log.csv',
-  #                     'data/track2_central/driving_log.csv', 'data/track2_test/driving_log.csv']
-
-    simulation_logs = ['data/t2_test/driving_log.csv']
+    simulation_logs = ['data/driving_log.csv']
     samples = read_sim_logs(simulation_logs)
 
     # Remove some of the zero angle samples
