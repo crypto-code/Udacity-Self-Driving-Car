@@ -1,3 +1,14 @@
+"""Commands the vehicle simulator to drive autonomously based on a given keras model.
+
+Usage:
+    Use `model.h5` to drive in autonomous mode
+        `python drive.py model.h5`
+    
+    Or, use `model.h5` to drive in autonomous mode, and save dashcam photos of the run to `./run1/`
+        `python drive.py model.h5 run1`
+"""
+
+#----------------------------------------------------------------------------------------------------------------------------------------------
 import argparse
 import base64
 import os
@@ -15,8 +26,8 @@ from flask import Flask
 from keras import __version__ as keras_version, backend as K
 from keras.models import load_model
 
-MAX_SPEED = 15
-MIN_SPEED = 5
+MAX_SPEED = 18
+MIN_SPEED = 8
 speed_limit = MAX_SPEED
 
 K.clear_session()
@@ -25,20 +36,13 @@ config.gpu_options.allow_growth = True
 session = tf.Session(config=config)
 K.set_session(session)
 
-"""Commands the vehicle simulator to drive autonomously based on a given keras model.
-
-Usage:
-    Use `model.h5` to drive in autonomous mode
-        `python drive.py model.h5`
-    
-    Or, use `model.h5` to drive in autonomous mode, and save dashcam photos of the run to `./run1/`
-        `python drive.py model.h5 run1`
-"""
+#----------------------------------------------------------------------------------------------------------------------------------------------
 
 sio = socketio.Server()
 app = Flask(__name__)
 model = None
 prev_image_array = None
+#----------------------------------------------------------------------------------------------------------------------------------------------
 
 class SimplePIController:
     def __init__(self, Kp, Ki):
@@ -60,6 +64,7 @@ class SimplePIController:
 
         return self.Kp * self.error + self.Ki * self.integral
 
+#----------------------------------------------------------------------------------------------------------------------------------------------
 
 controller = SimplePIController(0.1, 0.002)
 
@@ -67,7 +72,7 @@ controller = SimplePIController(0.1, 0.002)
 set_speed = 25
 controller.set_desired(set_speed)
 
-
+#----------------------------------------------------------------------------------------------------------------------------------------------
 @sio.on('telemetry')
 def telemetry(sid, data):
     if data:
@@ -119,6 +124,7 @@ def send_control(steering_angle, throttle):
         },
         skip_sid=True)
 
+#----------------------------------------------------------------------------------------------------------------------------------------------
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Remote Driving')
@@ -138,14 +144,14 @@ if __name__ == '__main__':
         'maxspeed',
         type=int,
         nargs='?',
-        default=18,
+        default=MAX_SPEED,
         help='Maximum speed limit'
     )
     parser.add_argument(
         'minspeed',
         type=str,
         nargs='?',
-        default=8,
+        default=MIN_SPEED,
         help='Minimum speed limit'
     )
     args = parser.parse_args()
@@ -174,8 +180,10 @@ if __name__ == '__main__':
     else:
         print("NOT RECORDING THIS RUN ...")
 
-    # wrap Flask application with engineio's middleware
+    # wrap Flask application with middleware
     app = socketio.Middleware(sio, app)
 
-    # deploy as an eventlet WSGI server
+    # deploy as an WSGI server
     eventlet.wsgi.server(eventlet.listen(('', 4567)), app)
+    
+#----------------------------------------------------------------------------------------------------------------------------------------------
