@@ -1,7 +1,20 @@
 # Udacity-Self-Driving-Car
 Train a Self-Driving Car in the Udacity's Self Driving Simulator
 
+## Dependencies
+- Matplotlib (https://pypi.org/project/matplotlib/)
+- Numpy (https://pypi.org/project/numpy/)
+- Flask (https://pypi.org/project/Flask/)
+- Socketio (https://pypi.org/project/socketio/)
+- Tensorflow (https://pypi.org/project/tensorflow/)
+- Keras (https://pypi.org/project/Keras/)
+- Scikit-Learn (https://pypi.org/project/scikit-learn/)
+
 ## Neural Network Model
+
+<p align="center">
+<img src="https://github.com/crypto-code/Udacity-Self-Driving-Car/blob/master/assets/model.jpg" align="middle" />   </p>
+
 ```
 Training samples       13,692
 Validation samples      2,282
@@ -49,6 +62,9 @@ Trainable params: 4,044,929
 Non-trainable params: 0
 _________________________________________________________________
 ```
+
+## Data Augmentation
+
 
 ## Pretrained Model
 Downlad the pretrained model [here](https://drive.google.com/open?id=1cbL44GLz6JfH04NR03Jt95W8X3fPH4Bj)
