@@ -1,5 +1,5 @@
 """
-Helper functions used by `train.py` to augment the raw dataset with additional driving examples.
+Helper functions to augment the raw dataset with additional driving examples
 """
 
 
@@ -11,6 +11,7 @@ from matplotlib import pyplot as plt
 from matplotlib.image import imread
 from sklearn.utils import shuffle
 
+#----------------------------------------------------------------------------------------------------------------------------------------------
 
 class VirtualSet:
     def __init__(self, sample_set, batch_size,
@@ -19,7 +20,7 @@ class VirtualSet:
         """
         Acts as an interface to sample data created by the simulator as well as augmented data, packaging them together
         as cohesive datasets (ie training set, validation set, etc.) ready for feeding into a neural network.
-
+        
         :param sample_set: A dictionary created by `read_sim_log()` containing file paths to sampled images and
         simulation measurements.
         :param batch_size: Number of samples to pass to the network each call to the generator function.
@@ -108,8 +109,10 @@ class VirtualSet:
         plt.hist([s['angle'] for s in self.raw_samples], bins='auto')
         plt.xlim([-1.5, 1.5])
         plt.subplot(2, 1, 2)
-        plt.title('Distribution after Augmentation (Representative)')
+        plt.title('Distribution after Augmentation')
         plt.hist(angles, bins='auto')
         plt.xlim([-1.5, 1.5])
         plt.show()
         return angles
+    
+#----------------------------------------------------------------------------------------------------------------------------------------------

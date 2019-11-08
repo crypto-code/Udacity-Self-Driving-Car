@@ -1,5 +1,5 @@
 """
-Definition of the model used by `train.py`.
+Definition of the model.
 """
 
 from keras.layers import Activation, BatchNormalization, Conv2D, Cropping2D, Dense, Dropout, Flatten, Lambda, \
@@ -7,7 +7,7 @@ from keras.layers import Activation, BatchNormalization, Conv2D, Cropping2D, Den
 from keras.models import Sequential
 from keras.regularizers import l2
 
-
+#----------------------------------------------------------------------------------------------------------------------------------------------
 def create_model(dropout_rate=None, l2_weight=None, batch_norm=False):
     """
     Returns a Keras sequential model with normalization as specified applied.
@@ -75,3 +75,5 @@ def create_model(dropout_rate=None, l2_weight=None, batch_norm=False):
     model.add(Dense(1))
 
     return model
+
+#----------------------------------------------------------------------------------------------------------------------------------------------
