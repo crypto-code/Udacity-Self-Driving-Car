@@ -26,6 +26,8 @@ To increase the number of samples with different steering angles, the dataset is
 
 ## Usage
 
+- First, collect Training data by running the simulator in training mode Or you can download already prepared training data [here](https://github.com/crypto-code/Udacity-Self-Driving-Car/releases/tag/v1.0).
+
 - To train your own model, first change line 57 in train.py to the directory of your training samples
 ```
 # Change this line to your training data
@@ -63,10 +65,6 @@ optional arguments:
 <img src="https://github.com/crypto-code/Udacity-Self-Driving-Car/blob/master/assets/result.gif" align="middle" />   </p>
 
 
-# G00D LUCK
-
-For doubts email me at:
-atinsaki@gmail.com
 # G00D LUCK
 
 For doubts email me at:
