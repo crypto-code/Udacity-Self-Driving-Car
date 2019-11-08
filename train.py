@@ -53,6 +53,7 @@ if __name__ == '__main__':
     
     
     print('Reading Samples.......')
+    # Change this line tou your training data
     simulation_logs = ['data/t1_first/driving_log.csv', 'data/t1_backwards/driving_log.csv', 'data/t1_forward/driving_log.csv']
     samples = read_sim_logs(simulation_logs)
 
