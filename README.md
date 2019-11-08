@@ -13,7 +13,7 @@ Train a Self-Driving Car in the Udacity's Self Driving Simulator
 ## Neural Network Model
 
 <p align="center">
-<img src="https://github.com/crypto-code/Udacity-Self-Driving-Car/blob/master/assets/model.jpg" align="middle" />   </p>
+<img src="https://github.com/crypto-code/Udacity-Self-Driving-Car/blob/master/assets/model.JPG" align="middle" />   </p>
 
 ```
 Training samples       13,692
