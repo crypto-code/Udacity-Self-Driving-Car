@@ -24,5 +24,40 @@ To increase the number of samples with different steering angles, the dataset is
 <p align="center">
 <img src="https://github.com/crypto-code/Udacity-Self-Driving-Car/blob/master/assets/augment.JPG" align="middle" />   </p>
 
-## Pretrained Model
-Downlad the pretrained model [here](https://drive.google.com/open?id=1cbL44GLz6JfH04NR03Jt95W8X3fPH4Bj)
+## Usage
+
+To train your own model, first change line 57 in train.py to the directory of your training samples
+```
+# Change this line to your training data
+    simulation_logs = ['data/t1_first/driving_log.csv', 'data/t1_backwards/driving_log.csv', 'data/t1_forward/driving_log.csv']
+```
+Then run,
+```
+python train.py
+```
+You can also downlad the pretrained model [here](https://github.com/crypto-code/Udacity-Self-Driving-Car/releases/tag/v1.0)
+
+To drive in autonomous mode, you can use the below available arguments
+```
+usage: drive.py [-h] [--model MODEL] [--image_folder [IMAGE_FOLDER]]
+                [--maxspeed [MAXSPEED]] [--minspeed [MINSPEED]]
+
+Remote Driving
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --model MODEL         Path to model h5 file. Model should be on the same
+                        path.
+  --image_folder [IMAGE_FOLDER]
+                        Path to image folder. This is where the images from
+                        the run will be saved.
+  --maxspeed [MAXSPEED]
+                        Maximum speed limit
+  --minspeed [MINSPEED]
+                        Minimum speed limit
+```
+
+## Result
+
+<p align="center">
+<img src="https://github.com/crypto-code/Udacity-Self-Driving-Car/blob/master/assets/result.gif" align="middle" />   </p>
